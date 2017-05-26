@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="4Ae-mT-8EJ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="1IM-bo-E4T">
+            <objects>
+                <navigationController id="4Ae-mT-8EJ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4SW-eG-VSk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IZc-Nl-9Re" kind="relationship" relationship="rootViewController" id="b7L-jn-Ts2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HtD-0N-UXf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-12" y="99"/>
+        </scene>
+        <!--Delegate-->
+        <scene sceneID="nxt-X9-aOl">
+            <objects>
+                <viewController storyboardIdentifier="BarCodeScanVC" id="IZc-Nl-9Re" customClass="BarCodeScanVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pOm-J3-Upb"/>
+                        <viewControllerLayoutGuide type="bottom" id="M7j-Sn-Imk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Ri-Ld-ZyB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dyc-M3-suI" userLabel="ScannerView" customClass="RMScannerView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="547"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="IZc-Nl-9Re" id="sM0-df-GQQ"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N37-8K-iGU">
+                                <rect key="frame" x="63" y="627" width="249" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nHy-mY-nzN"/>
+                                </constraints>
+                                <state key="normal" title="List Of scannned Data"/>
+                                <connections>
+                                    <action selector="btnScanListAction:" destination="IZc-Nl-9Re" eventType="touchUpInside" id="Rsy-GZ-yfd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="M7j-Sn-Imk" firstAttribute="top" secondItem="N37-8K-iGU" secondAttribute="bottom" constant="10" id="RlC-Zj-hRB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N37-8K-iGU" secondAttribute="trailing" constant="47" id="URs-vL-5fg"/>
+                            <constraint firstItem="Dyc-M3-suI" firstAttribute="leading" secondItem="3Ri-Ld-ZyB" secondAttribute="leading" id="YH2-hR-Tbh"/>
+                            <constraint firstAttribute="trailing" secondItem="Dyc-M3-suI" secondAttribute="trailing" id="cxY-7P-wgt"/>
+                            <constraint firstItem="Dyc-M3-suI" firstAttribute="top" secondItem="pOm-J3-Upb" secondAttribute="bottom" id="dUu-Nj-TdU"/>
+                            <constraint firstItem="N37-8K-iGU" firstAttribute="leading" secondItem="3Ri-Ld-ZyB" secondAttribute="leadingMargin" constant="47" id="uBG-XS-EuF"/>
+                            <constraint firstItem="N37-8K-iGU" firstAttribute="top" secondItem="Dyc-M3-suI" secondAttribute="bottom" constant="16" id="xpI-Je-iXX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scan Code" id="vWF-IC-jas">
+                        <barButtonItem key="rightBarButtonItem" title="Start Scan" id="fCr-xW-lS2">
+                            <connections>
+                                <action selector="scanBtnAction:" destination="IZc-Nl-9Re" id="TkV-uE-L43"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scanBtnOutlet" destination="fCr-xW-lS2" id="LLY-Qa-gOM"/>
+                        <outlet property="scannerView" destination="Dyc-M3-suI" id="zZz-y2-2YW"/>
+                        <segue destination="Wrv-jU-Q1G" kind="push" identifier="ListOfScannedVC" id="zrD-9n-Bdk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rpV-On-RKG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="472.5" y="98.5"/>
+        </scene>
+        <!--Scan Products-->
+        <scene sceneID="qvw-uQ-WFl">
+            <objects>
+                <viewController storyboardIdentifier="ListOfScannedVC" id="Wrv-jU-Q1G" customClass="ListOfScannedVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ctS-Jy-xyw"/>
+                        <viewControllerLayoutGuide type="bottom" id="eT3-dW-FXz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fMB-GM-ZZ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="69X-i9-Ryb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Cca-s3-fOb" style="IBUITableViewCellStyleDefault" id="txE-Eh-5qR">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="txE-Eh-5qR" id="c2A-SV-9IS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cca-s3-fOb">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Wrv-jU-Q1G" id="uHt-kc-8eb"/>
+                                    <outlet property="delegate" destination="Wrv-jU-Q1G" id="0TE-Fo-PcE"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="69X-i9-Ryb" secondAttribute="trailing" id="Ecp-MK-SoH"/>
+                            <constraint firstItem="eT3-dW-FXz" firstAttribute="top" secondItem="69X-i9-Ryb" secondAttribute="bottom" id="Iw1-cK-h7h"/>
+                            <constraint firstItem="69X-i9-Ryb" firstAttribute="leading" secondItem="fMB-GM-ZZ9" secondAttribute="leading" id="dTk-In-D6R"/>
+                            <constraint firstItem="69X-i9-Ryb" firstAttribute="top" secondItem="ctS-Jy-xyw" secondAttribute="bottom" id="v5r-r2-ZpW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scan Products" id="ANQ-x4-LuR">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="U2h-SD-qSp">
+                            <connections>
+                                <action selector="btnBackAction:" destination="Wrv-jU-Q1G" id="lGM-pK-DFR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tblOutlet" destination="69X-i9-Ryb" id="GiJ-Gt-b8f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aiH-gv-Ssb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973" y="99"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
+</document>
